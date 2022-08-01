@@ -7,46 +7,40 @@ let score = 100;
 //Variável para a Pontuação Máxima
 let highscore = 0;
 
-//Teste - mostrando o número na tela
-// document.querySelector(".number").textContent = secretNumber;
-
-//Ao clicar no botão "Chutar!"
+//Evento ao clicar no botão "Chutar!".
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
 
   if (!guess) {
+    //Nenhum número chutado.
     document.querySelector(".message").textContent = "⛔ Sem Número!";
   } else if (guess === secretNumber) {
+    //Número chutado corretamente.
     document.querySelector(".message").textContent = "🎉 Número Correto!";
     document.querySelector(".number").textContent = secretNumber;
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").style.width = "30rem";
     if (score > highscore) {
+      //Acúmulo da Pontuação Máxima.
       highscore = score;
       document.querySelector(".highscore").textContent = highscore;
     }
-  } else if (guess > secretNumber) {
+  } else {
     if (score > 1) {
-      document.querySelector(".message").textContent = "📈 Muito alto...";
+      //Verifica se perdeu ou não.
+      document.querySelector(".message").textContent =
+        guess > secretNumber ? "📈 Muito alto..." : "📉 Muito baixo..."; //Ternário para definir o contúdo escrito da dica.
       score--;
       document.querySelector(".score").textContent = score;
     } else {
-      document.querySelector(".message").textContent = "💥 Você perdeu! 🙁";
-      document.querySelector(".score").textContent = 0;
-    }
-  } else if (guess < secretNumber) {
-    if (score > 1) {
-      document.querySelector(".message").textContent = "📉 Muito baixo...";
-      score--;
-      document.querySelector(".score").textContent = score;
-    } else {
+      //Ao perder.
       document.querySelector(".message").textContent = "💥 Você perdeu! 🙁";
       document.querySelector(".score").textContent = 0;
     }
   }
 });
 
-//Ao clicar no botão "De Novo!"
+//Ao clicar no botão "De Novo!" reseta os valores e formatações do jogo.
 document.querySelector(".again").addEventListener("click", function () {
   score = 100;
   secretNumber = Math.trunc(Math.random() * 100) + 1;
