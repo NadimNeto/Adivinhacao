@@ -6,3 +6,5 @@ Linguagens Utilizadas:
   - HTML
   - CSS
   - JavaScript
+
+*Baseado no curso de JavaScript
