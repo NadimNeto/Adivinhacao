@@ -1,4 +1,6 @@
-Jogo básico de adivinhação como treino de JavaScript e manipulação de DOM.
+Jogo básico de adivinhação!
+
+Criado como forma de treino de JavaScript e manipulação de DOM.
 
 Linguagens Utilizadas:
   - HTML
